@@ -1,25 +1,25 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+
+import { routes } from './app.routes';
+import { AppComponent } from './app.component';
 import { RouterModule } from '@angular/router';
 
-import { AppComponent } from './app.component';
-import { NavMenuComponent } from './nav-menu/nav-menu.component';
-import { HomeComponent } from './home/home.component';
+import {AsinMasterComponent} from './container/asin-master/asin-master.component';
+import { PageComponent } from './components/page/page.component';
+import { FormsModule } from '@angular/forms';
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavMenuComponent,
-    HomeComponent,
+    AsinMasterComponent,
+    PageComponent
   ],
   imports: [
-    HttpClientModule,
     FormsModule,
-    RouterModule.forRoot([
-      { path: '', component: HomeComponent, pathMatch: 'full' }
-    ])
+    BrowserModule,
+    RouterModule.forRoot(routes)
   ],
   providers: [],
   bootstrap: [AppComponent]

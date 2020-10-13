@@ -1,0 +1,14 @@
+:host{
+    display: block;
+
+    $margin: 20px;
+
+    margin: $margin;
+    width: calc(100% - (#{$margin} * 2)) ;
+    height: calc(100% - (#{$margin} * 2)) ;
+    display: flex;
+    justify-content: center;
+
+    border: 1px solid gray;
+    background-color: gray;
+}
