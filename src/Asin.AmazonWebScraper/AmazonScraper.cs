@@ -5,14 +5,14 @@ using System.Threading.Tasks;
 
 namespace Asin.AmazonWebScraper
 {
-    public class AmazonService
+    public class AmazonScraper
     {
         private const string AsinUrl = @"https://www.amazon.com/product-reviews/{0}";
 
         private readonly AmazonParser _parser;
         private readonly Scraper _scraper;
 
-        public AmazonService(AmazonParser parser, Scraper scraper)
+        public AmazonScraper(AmazonParser parser, Scraper scraper)
         {
             _parser = parser;
             _scraper = scraper;

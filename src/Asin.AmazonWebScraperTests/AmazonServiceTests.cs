@@ -12,7 +12,7 @@ namespace Asin.AmazonWebScraperTests
         public async Task AmazonService_GetAllPages()
         {
             // Arrange
-            AmazonService amazonService = AmazonModule.Create<AmazonService>();
+            AmazonWebScraper.AmazonScraper amazonService = AmazonModule.Create<AmazonWebScraper.AmazonScraper>();
 
             // Act
             var pages = await amazonService.GeAlltPageDataFromAsinAsync("B082XY23D5");
@@ -26,7 +26,7 @@ namespace Asin.AmazonWebScraperTests
         public async Task AmazonService_GetPages()
         {
             // Arrange
-            AmazonService amazonService = AmazonModule.Create<AmazonService>();
+            AmazonWebScraper.AmazonScraper amazonService = AmazonModule.Create<AmazonWebScraper.AmazonScraper>();
 
             // Act
             AsinPageData page = await amazonService.GetPageDataFromAsinAsync("B082XY23D5");

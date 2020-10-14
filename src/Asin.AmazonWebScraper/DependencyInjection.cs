@@ -27,7 +27,7 @@ namespace Asin.AmazonWebScraper
             services.AddTransient<Scraper>();
 
             services.AddTransient<AmazonParser>();
-            services.AddTransient<AmazonService>();
+            services.AddTransient<AmazonScraper>();
 
             return services;
         }

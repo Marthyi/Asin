@@ -1,6 +1,34 @@
 <div>
     Ajouter un code ASIN:
     <form>
-        <input name="asin"  [(ngModel)]="asin" /> <button (click)="addAsin()">Ajouter</button>
+        <input name="asin" [(ngModel)]="asin" />
+        <button [disabled]="(asinsState$ | async) != STATE.Loaded" (click)="addAsin()">Ajouter</button>
     </form>
+</div>
+<div [ngSwitch]="(asinsState$ | async)">
+    <div *ngSwitchCase="STATE.Loaded">
+
+        <div *ngIf="(asins$ | async)?.length == 0;else elseBlock">
+            aucun éléments
+        </div>
+        <ng-template #elseBlock>
+            <table>
+                <ng-container *ngFor="let item of asins$ | async">
+                    <tr>
+                        <td><a target="_blank"
+                                href="https://www.amazon.com/product-reviews/{{item.asin}}">{{ item.asin }}</a></td>
+                        <td>{{ item.title }}</td>
+                        <td [ngClass]="{loading: item.state == 1}">{{ asinLabels[item.state] }}</td>
+                    </tr>
+                </ng-container>
+            </table>
+        </ng-template>
+    </div>
+
+    <div *ngSwitchCase="STATE.Loading">
+        Loading...
+    </div>
+    <div *ngSwitchCase="STATE.Error">
+        Echec du chargement.
+    </div>
 </div>

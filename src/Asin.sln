@@ -5,9 +5,13 @@ VisualStudioVersion = 16.0.30523.141
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Asin.Web", "Asin.Web\Asin.Web.csproj", "{029C4895-1B7C-4353-8EF1-8E4F1468163D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Asin.AmazonWebScraper", "Asin.AmazonWebScraper\Asin.AmazonWebScraper.csproj", "{59B1E084-633F-462A-89C2-4FF7F3EFF353}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Asin.AmazonWebScraper", "Asin.AmazonWebScraper\Asin.AmazonWebScraper.csproj", "{59B1E084-633F-462A-89C2-4FF7F3EFF353}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Asin.AmazonWebScraperTests", "Asin.AmazonWebScraperTests\Asin.AmazonWebScraperTests.csproj", "{32C6D30B-3955-4711-9EA4-A1A78DCB197C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Asin.AmazonWebScraperTests", "Asin.AmazonWebScraperTests\Asin.AmazonWebScraperTests.csproj", "{32C6D30B-3955-4711-9EA4-A1A78DCB197C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Asin.AmazonService", "Asin.AmazonService\Asin.AmazonService.csproj", "{C44EECDC-925C-499F-B162-AFF5698DD319}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AmazonWebScraper", "AmazonWebScraper", "{B5FC5D25-7160-4BBB-A9CC-B4046F1E4760}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,9 +31,17 @@ Global
 		{32C6D30B-3955-4711-9EA4-A1A78DCB197C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{32C6D30B-3955-4711-9EA4-A1A78DCB197C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{32C6D30B-3955-4711-9EA4-A1A78DCB197C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C44EECDC-925C-499F-B162-AFF5698DD319}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C44EECDC-925C-499F-B162-AFF5698DD319}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C44EECDC-925C-499F-B162-AFF5698DD319}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C44EECDC-925C-499F-B162-AFF5698DD319}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{59B1E084-633F-462A-89C2-4FF7F3EFF353} = {B5FC5D25-7160-4BBB-A9CC-B4046F1E4760}
+		{32C6D30B-3955-4711-9EA4-A1A78DCB197C} = {B5FC5D25-7160-4BBB-A9CC-B4046F1E4760}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {96D2361B-40AE-4F61-8F0D-6D07067B93AC}
