@@ -18,9 +18,14 @@ namespace Asin.AmazonService
             _backgroundEngine.AddAsin(asinCode);
         }
 
-        public AsinData[] GetAsins()
+        public AsinServiceModel[] GetAsins()
         {
             return _inMemory.AasinDictionary.Select(p => p.Value).ToArray();
+        }
+
+        public ReviewServiceModel[] GetReviews()
+        {
+            return _inMemory.GetReviews();
         }
 
     }

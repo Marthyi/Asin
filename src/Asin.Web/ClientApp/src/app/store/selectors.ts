@@ -11,3 +11,5 @@ const createMainStateSelector = function <T>(
 
 export const selectAsins = createMainStateSelector((p) => p.asins);
 export const selectAsinsState = createMainStateSelector((p) => p.asinsState);
+
+export const selectReviews = createMainStateSelector((p) => p.reviews);

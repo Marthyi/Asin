@@ -1,6 +1,7 @@
 ﻿using Asin.AmazonWebScraper.Models;
 using HtmlAgilityPack;
 using System;
+using System.Linq;
 using System.Net;
 using System.Web;
 
@@ -65,19 +66,29 @@ namespace Asin.AmazonWebScraper
 
         private CustomerReview[] GetReviews(HtmlDocument htmlDoc)
         {
-            HtmlNodeCollection nodes = htmlDoc.DocumentNode.SelectNodes(CustomerReviewPage_ArticleNodes);
+            var nodes = htmlDoc.DocumentNode
+                .SelectNodes(CustomerReviewPage_ArticleNodes).ToArray();
 
-            var items = new CustomerReview[nodes.Count];
+            if (nodes == null || nodes.Length == 0)
+            {
+                return null;
+            }
+
+            var items = new CustomerReview[nodes.Length];
 
             for (int i = 0; i < items.Length; i++)
             {
-                var item = new CustomerReview();
-                items[i] = item;
+                try
+                {
+                    var item = new CustomerReview();
 
-                item.Title = nodes[i].SelectSingleNode(@"//a[@data-hook='review-title']/span").InnerText.Trim();
-                item.Date = nodes[i].SelectSingleNode(@"//span[@data-hook='review-date']").InnerText.Trim();
-                item.Rating = nodes[i].SelectSingleNode(@"//i[@data-hook='review-star-rating']/span").InnerText.Trim();
-                item.Content = nodes[i].SelectSingleNode(@"//span[@data-hook='review-body']/span").InnerText.Trim();
+                    item.Title = nodes[i].SelectSingleNode(@"./*//a[@data-hook='review-title']/span").InnerText.Trim();
+                    item.Date = nodes[i].SelectSingleNode(@"./*//span[@data-hook='review-date']").InnerText.Trim();
+                    item.Rating = nodes[i].SelectSingleNode(@"./*//i[@data-hook='review-star-rating']/span").InnerText.Trim();
+                    item.Content = nodes[i].SelectSingleNode(@"./*//span[@data-hook='review-body']/span").InnerText.Trim();
+                    items[i] = item;
+                }
+                catch (Exception) { }
             }
 
             return items;

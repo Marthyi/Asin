@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { MatTableDataSource } from '@angular/material/table';
 import { Store } from "@ngrx/store";
 import { Observable } from "rxjs";
 import { AsinStateEnum, EnumLabels } from "src/app/core/models";
@@ -19,18 +20,36 @@ export class AsinMasterComponent implements OnInit {
   public asins$: Observable<Asin[]>;
   public asinsState$: Observable<SimpleRequestState>;
 
+  public displayedColumns: string[] = ['asin','title','state'];
+  public dataSource :  MatTableDataSource<Asin>;
+
   constructor(private store: Store<IAppState>) {
     this.asin = "B082XY23D5";
+
+    this.dataSource = new MatTableDataSource<Asin>([]);
+
     this.asins$ = store.select(selectAsins);
     this.asinsState$ = store.select(selectAsinsState);
 
     this.store.dispatch(StateActions.Main.loading_Asins());
 
     this.asins$.subscribe((p) => {
+
+      let source = p.map(item => {
+        return {
+          ...item,
+          stateLabel : EnumLabels.AsinState[item.state]
+        }
+      });
+
+      
+
+      this.dataSource.data = source;
+
       if (p.filter((asin) => asin.state == AsinStateEnum.Loading).length > 0) {
         setTimeout(
           () => this.store.dispatch(StateActions.Main.loading_Asins()),
-          5000
+          1000
         );
       }
     });

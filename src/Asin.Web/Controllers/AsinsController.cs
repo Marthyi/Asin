@@ -21,7 +21,7 @@ namespace Asin.Web.Controllers
         }
 
         [HttpGet("")]
-        public AsinData[] GetAsinsAsync()
+        public AsinServiceModel[] GetAsinsAsync()
         {
             return _amazonProvider.GetAsins();
         }
@@ -30,6 +30,30 @@ namespace Asin.Web.Controllers
         public void AddAsinCodeAsync([FromBody] AddAsinCodeRequest request)
         {
             _amazonProvider.AddAsin(request.AsinCode);
+        }
+
+        [HttpGet("reviews")]
+        public ReviewServiceModel[] AddAsinCodeAsync()
+        {
+            return _amazonProvider.GetReviews();
+        }
+    }
+
+    [ApiController]
+    [Route("[controller]")]
+    public class ReviewsController : ControllerBase
+    {
+        private readonly AmazonProvider _amazonProvider;
+
+        public ReviewsController(AmazonProvider amazonProvider)
+        {
+            _amazonProvider = amazonProvider;
+        }
+
+        [HttpGet("")]
+        public ReviewServiceModel[] AddAsinCodeAsync()
+        {
+            return _amazonProvider.GetReviews();
         }
     }
 }

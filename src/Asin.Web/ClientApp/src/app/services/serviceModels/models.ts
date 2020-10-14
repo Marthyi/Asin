@@ -7,6 +7,13 @@ export interface AsinServiceModel {
   state: AsinStateEnum;
 }
 
+export interface ReviewServiceModel {
+  asin: string;
+  title: string;
+  content:string;
+  rating:string;
+}
+
 export const ServiceModelMapper = {
   MapToAsin(serviceModel: AsinServiceModel): Asin {
     return <Asin>{

@@ -1,6 +1,12 @@
 :host {
     display: block;
 
+.form{
+    button{
+        margin-left: 10px;
+    }
+}
+
     @keyframes loading-animation {
         0% {
             opacity: 1;

@@ -1,4 +1,5 @@
 import { AsinStateEnum } from "src/app/core/models";
+import { ReviewServiceModel } from '../services/serviceModels/models';
 
 export interface IAppState {
   main: MainState;
@@ -14,6 +15,9 @@ export enum SimpleRequestState{
 export interface MainState {
   asins: Asin[];
   asinsState: SimpleRequestState;
+
+  reviews:ReviewServiceModel[];
+
 }
 
 export interface Asin {
@@ -24,5 +28,6 @@ export interface Asin {
 
 export const initialState: MainState = {
   asins: [],
-  asinsState: SimpleRequestState.Loading
+  asinsState: SimpleRequestState.Loading,
+  reviews:[]
 };

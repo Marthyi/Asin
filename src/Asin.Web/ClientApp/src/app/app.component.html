@@ -1,4 +1,19 @@
-<a target="_blank" href="https://www.notion.so/Full-stack-Engineering-Home-Project-197b19f9b951460ca0eed359d5acc93d">SPECIFICATION PROJET</a>
+<a target="_blank"
+  href="https://www.notion.so/Full-stack-Engineering-Home-Project-197b19f9b951460ca0eed359d5acc93d">SPECIFICATION
+  PROJET</a>
+<br />
+
+
 <app-page>
-  <router-outlet></router-outlet>
+  <div class="menu">
+    <a #rlaAsin='routerLinkActive' routerLinkActive [routerLink]="['./']" [routerLinkActiveOptions]= "{exact: true}">
+      <button  [class.mat-primary]="rlaAsin.isActive" mat-flat-button >ASIN</button>
+    </a>
+    <a #rlaReviews='routerLinkActive' routerLinkActive [routerLink]="'reviews'" [routerLinkActiveOptions]= "{exact: true}">
+      <button [class.mat-primary]="rlaReviews.isActive" mat-flat-button >REVIEWS</button>
+    </a>
+  </div>
+  <div>
+    <router-outlet></router-outlet>
+  </div>
 </app-page>

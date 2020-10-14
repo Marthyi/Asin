@@ -1,0 +1,11 @@
+:host {
+  display: block;
+
+  .mat-column-title {
+    min-width: 300px;
+  }
+
+  .mat-column-asin {
+    min-width: 100px;
+  }
+}

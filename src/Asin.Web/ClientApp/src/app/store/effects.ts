@@ -4,8 +4,11 @@ import { ActionCreator, Creator } from "@ngrx/store";
 import { Observable, of } from "rxjs";
 import { switchMap } from "rxjs/operators";
 import { AmazonService } from "../services/amazon.service";
-import { AsinServiceModel, ServiceModelMapper } from '../services/serviceModels/models';
-import { StateActions } from './actions';
+import {
+  AsinServiceModel,
+  ServiceModelMapper,
+} from "../services/serviceModels/models";
+import { StateActions } from "./actions";
 
 @Injectable()
 export class Effects {
@@ -14,15 +17,26 @@ export class Effects {
   @Effect()
   $loading_Asins = this.onAction(StateActions.Main.loading_Asins).pipe(
     switchMap((p) =>
+      this.service.getAsins().pipe(
+        switchMap((asins) =>
+          of(
+            StateActions.Main.loaded_Asins(<{ asins: AsinServiceModel[] }>{
+              asins: asins.map(ServiceModelMapper.MapToAsin),
+            })
+          )
+        )
+      )
+    )
+  );
+
+  @Effect()
+  $loading_Reviews = this.onAction(StateActions.Main.loading_Reviews).pipe(
+    switchMap((p) =>
       this.service
-        .getAsins()
+        .getReviews()
         .pipe(
           switchMap((asins) =>
-            of(
-              StateActions.Main.loaded_Asins(<{asins:AsinServiceModel[]}>{
-                asins: asins.map(ServiceModelMapper.MapToAsin),
-              })
-            )
+            of(StateActions.Main.loaded_Reviews({ reviews: asins }))
           )
         )
     )
@@ -31,17 +45,14 @@ export class Effects {
   @Effect()
   $add_Asin = this.onAction(StateActions.Main.add_Asin).pipe(
     switchMap((p) =>
-      this.service
-        .postAsin(p.asin)
-        .pipe(
-          switchMap(_ =>
-            of(
-              // StateActions.Main. loaded_Asins(<{asins:AsinServiceModel[]}>{
-              //   asins: asins.map(ServiceModelMapper.MapToAsin),
-              // })
-            )
-          )
+      this.service.postAsin(p.asin).pipe(
+        switchMap((_) =>
+          of()
+          // StateActions.Main. loaded_Asins(<{asins:AsinServiceModel[]}>{
+          //   asins: asins.map(ServiceModelMapper.MapToAsin),
+          // })
         )
+      )
     )
   );
 

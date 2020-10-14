@@ -1,0 +1,28 @@
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+  <ng-container matColumnDef="asin">
+    <th class="col-title"  mat-header-cell *matHeaderCellDef> ASIN </th>
+    <td class="col-title"  mat-cell *matCellDef="let element">
+      <a target="_blank" href="https://amazon.com/product-reviews/{{element.asin}}"> {{element.asin}}
+      </a>
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="title">
+    <th mat-header-cell *matHeaderCellDef> PRODUCT TITLE </th>
+    <td mat-cell *matCellDef="let element"> {{element.title}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="content">
+    <th mat-header-cell *matHeaderCellDef> REVIEW </th>
+    <td mat-cell *matCellDef="let element"> {{element.content}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="rating">
+    <th mat-header-cell *matHeaderCellDef> RATING </th>
+    <td mat-cell *matCellDef="let element"> {{element.rating}} </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>

@@ -6,6 +6,7 @@ namespace Asin.AmazonWebScraper.Models
 {
     public class AsinPageData
     {
+        public string Asin { get; }
         public string ProductTitle { get; }
         public Uri NextPageUri { get; }
 
