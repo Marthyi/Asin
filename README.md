@@ -1,3 +1,10 @@
-Asin
+## Home page
+![img](demo/Home.png)
+* Features
+  * Add & indexing new ASIN code 
 
-![](demo/Home.png | width=600)
+## Customer reviews page
+![img](demo/Reviews.png)
+* Features
+  * column sort
+  * paging
