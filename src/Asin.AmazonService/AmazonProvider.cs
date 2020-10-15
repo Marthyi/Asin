@@ -15,6 +15,7 @@ namespace Asin.AmazonService
 
         public void AddAsin(string asinCode)
         {
+            asinCode = asinCode.Trim();
             _backgroundEngine.AddAsin(asinCode);
         }
 

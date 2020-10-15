@@ -23,6 +23,11 @@ namespace Asin.AmazonService
 
         public void AddAsin(string asin)
         {
+            if (_inMemory.AasinDictionary.ContainsKey(asin))
+            {
+                return;
+            }
+
             if (_inMemory.AasinDictionary.TryAdd(asin, new AsinServiceModel()
             {
                 Asin = asin,
@@ -57,11 +62,13 @@ namespace Asin.AmazonService
                     }
 
                     _inMemory.AddCustomerReviews(asin, scrapData);
+                    if (scrapData.NextPageUri != null)
+                    {
+                        _inMemory.AddCustomerReviews(asin, await _amazonScraper.GetPageDataFromUriAsync(scrapData.NextPageUri));
 
-                    _inMemory.AddCustomerReviews(asin, await _amazonScraper.GetPageDataFromUriAsync(scrapData.NextPageUri));
-
+                    }
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     if (_inMemory.AasinDictionary.TryGetValue(asin, out AsinServiceModel asinData))
                     {
