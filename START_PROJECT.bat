@@ -7,7 +7,7 @@ CALL build_app.bat
 cd ..\..
 
 
-start dotnet run --configuration=Release --after-init "start http://localhost"
+start dotnet run --configuration=Release
 
 explorer https://localhost:5001/
 
