@@ -83,7 +83,7 @@ namespace Asin.AmazonWebScraper
                     var item = new CustomerReview();
 
                     item.Title = nodes[i].SelectSingleNode(@"./*//a[@data-hook='review-title']/span").InnerText.Trim();
-                    item.Date = nodes[i].SelectSingleNode(@"./*//span[@data-hook='review-date']").InnerText.Trim();
+                    item.RawDate = nodes[i].SelectSingleNode(@"./*//span[@data-hook='review-date']").InnerText.Trim();
                     item.Rating = nodes[i].SelectSingleNode(@"./*//i[@data-hook='review-star-rating']/span").InnerText.Trim();
                     item.Content = nodes[i].SelectSingleNode(@"./*//span[@data-hook='review-body']/span").InnerText.Trim();
                     items[i] = item;

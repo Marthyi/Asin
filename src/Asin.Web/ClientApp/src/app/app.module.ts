@@ -24,6 +24,8 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import { CustomerReviewsComponent } from './container/customer-reviews/customer-reviews.component';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
+import { MatSortModule } from '@angular/material/sort';
+import {MatPaginatorModule} from '@angular/material/paginator';
 
 @NgModule({
   declarations: [AppComponent, AsinMasterComponent, PageComponent, CustomerReviewsComponent],
@@ -35,6 +37,8 @@ import { HashLocationStrategy, LocationStrategy } from '@angular/common';
     MatIconModule,
     MatButtonModule,
     MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
     EffectsModule.forRoot([Effects]),
     StoreModule.forRoot(reducers),
     StoreDevtoolsModule.instrument(),

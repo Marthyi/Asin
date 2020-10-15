@@ -1,4 +1,6 @@
-﻿namespace Asin.AmazonService
+﻿using System;
+
+namespace Asin.AmazonService
 {
     public class AsinServiceModel
     {
@@ -16,7 +18,7 @@
         public string Title { get; set; }
         public string Content { get; set; }
         public int Rating { get; set; }
-        public string Date { get; internal set; }
+        public DateTime Date { get; internal set; }
     }
 
 }

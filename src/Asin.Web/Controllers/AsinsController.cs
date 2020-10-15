@@ -38,22 +38,4 @@ namespace Asin.Web.Controllers
             return _amazonProvider.GetReviews();
         }
     }
-
-    [ApiController]
-    [Route("[controller]")]
-    public class ReviewsController : ControllerBase
-    {
-        private readonly AmazonProvider _amazonProvider;
-
-        public ReviewsController(AmazonProvider amazonProvider)
-        {
-            _amazonProvider = amazonProvider;
-        }
-
-        [HttpGet("")]
-        public ReviewServiceModel[] AddAsinCodeAsync()
-        {
-            return _amazonProvider.GetReviews();
-        }
-    }
 }

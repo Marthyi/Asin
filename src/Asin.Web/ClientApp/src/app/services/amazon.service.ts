@@ -1,7 +1,10 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
-import { AsinServiceModel, ReviewServiceModel } from "src/app/services/serviceModels/models";
+import {
+  AsinServiceModel,
+  ReviewServiceModel,
+} from "src/app/services/serviceModels/models";
 
 @Injectable({
   providedIn: "root",
@@ -19,13 +22,14 @@ export class AmazonService {
 
   getReviews(): Observable<ReviewServiceModel[]> {
     let response: Observable<ReviewServiceModel[]>;
-
-    response = this.httpClient.get<ReviewServiceModel[]>("/reviews");
+    response = this.httpClient.get<ReviewServiceModel[]>(
+      window.location.hash.substring(2)
+    );
 
     return response;
   }
 
   postAsin(asin: string): Observable<any> {
-   return this.httpClient.post("/asins", { asinCode: asin });
+    return this.httpClient.post("/asins", { asinCode: asin });
   }
 }

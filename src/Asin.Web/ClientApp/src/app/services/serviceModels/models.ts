@@ -12,6 +12,7 @@ export interface ReviewServiceModel {
   title: string;
   content:string;
   rating:string;
+  date:Date;
 }
 
 export const ServiceModelMapper = {

@@ -1,5 +1,6 @@
 using Asin.AmazonWebScraper;
 using Asin.AmazonWebScraper.Models;
+using System;
 using System.IO;
 using System.Reflection;
 using Xunit;
@@ -10,7 +11,7 @@ namespace Asin.AmazonWebScraperTests
     public class CustomerReviewTests
     {
         [Fact]
-        public void Scraper_GetPageContent()
+        public void CustomerReview_ParseRating()
         {
             // Arrange
             CustomerReview review = new CustomerReview();
@@ -27,6 +28,25 @@ namespace Asin.AmazonWebScraperTests
 
             // Assert
             Assert.Equal(1, review.RatingValue);
+
+        }
+
+        [Fact]
+        public void CustomerReview_ParseDate()
+        {
+            // Arrange
+            CustomerReview review = new CustomerReview();
+
+
+
+            // Act
+            review.RawDate = "Reviewed in the United States on March 8, 2020";
+
+
+
+          
+            // Assert
+            Assert.Equal(new DateTime(2020,3,8), review.Date);
 
         }
     }
