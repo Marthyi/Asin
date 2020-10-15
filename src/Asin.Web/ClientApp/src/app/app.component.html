@@ -9,7 +9,7 @@
     <a #rlaAsin='routerLinkActive' routerLinkActive [routerLink]="['./']" [routerLinkActiveOptions]= "{exact: true}">
       <button  [class.mat-primary]="rlaAsin.isActive" mat-flat-button >ASIN</button>
     </a>
-    <a #rlaReviews='routerLinkActive' routerLinkActive [routerLink]="'reviews'" [routerLinkActiveOptions]= "{exact: true}">
+    <a #rlaReviews='routerLinkActive' routerLinkActive [routerLink]="'reviews'" >
       <button [class.mat-primary]="rlaReviews.isActive" mat-flat-button >REVIEWS</button>
     </a>
   </div>
